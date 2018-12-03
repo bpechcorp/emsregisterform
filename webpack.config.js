@@ -36,7 +36,7 @@ module.exports = {
       host: process.env.IP || 'localhost',
       port: process.env.PORT || 3000,
       server: {
-        baseDir: ['./', './build','./assets','./dist']
+        baseDir: ['./src','./dist']
       }
     })
   ],
@@ -47,11 +47,6 @@ module.exports = {
         include: [path.join(__dirname, 'src', 'static', 'css')],
         use : ['style-loader', {
           loader : 'css-loader',
-          options : {
-            modules : true,
-            importLoaders : 1,
-            localIdentName : '[path][name]__[local]--[hash:base64:5]',
-          },
         }],
       },
       { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') }
@@ -67,6 +62,10 @@ module.exports = {
       // 'phaser': phaser,
       // 'pixi': pixi,
       // 'p2': p2
-    }
+    },
+    modules : [
+      path.resolve('./src'),
+      path.resolve('./node_modules')
+    ]
   }
 }

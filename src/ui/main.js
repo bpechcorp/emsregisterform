@@ -1,4 +1,6 @@
+require("static/css/main.css");
 import React from 'react';
+import JList from 'ui/list';
 
 class Main extends React.Component{
 	constructor(props){
@@ -8,7 +10,9 @@ class Main extends React.Component{
 		return false;
 	}
 	render(){
-		return (<p>{this.props.message}</p>)
+		return (<div className={"main"}>
+			<JList />
+		</div>)
 	}
 }
 

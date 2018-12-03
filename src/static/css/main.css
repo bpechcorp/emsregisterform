@@ -1,0 +1,23 @@
+.main{
+	display: flex;
+	width: 100vw;
+	height: 80vh;
+	overflow: hidden;
+}
+.list{
+	flex: 1 1 auto;
+	position: relative;
+}
+.item-container{
+	display: flex;
+}
+.item-image{
+	height: 150px;
+	width: 150px;
+	background-size: 150px 150px;
+	background-position: center center;
+}
+.item-info-container{
+	margin: auto;
+	text-align: center;
+}

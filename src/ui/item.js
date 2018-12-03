@@ -1,4 +1,5 @@
 import React from 'react';
+const Colors = [`#3498db`, '#e67e22', '#f39c12', '#f1c40f']
 
 class JItem extends React.Component{
 	constructor(props){
@@ -7,7 +8,9 @@ class JItem extends React.Component{
 			imgSrc : props.imgSrc,
 			name : props.name,
 			creator : props.creator,
-			price : props.price
+			price : props.price,
+			color : Colors[Math.floor(Math.random() * Colors.length)],
+			rank : Math.floor(Math.random() * 100 ) + 10 
 		}
 	}
 
@@ -26,6 +29,9 @@ class JItem extends React.Component{
 					<div>{this.state.name}</div>
 					<div>{this.state.creator}</div>
 					<div>{this.state.price}</div>
+				</div>
+				<div className="item-info-rank" style={{color:`${this.state.color}`}}>
+				{this.state.rank}
 				</div>
 			</div>
 		)

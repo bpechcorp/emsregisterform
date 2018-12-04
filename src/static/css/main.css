@@ -8,11 +8,24 @@
 	flex: 1 1 auto;
 	position: relative;
 }
-.item-container{
+.item-index{
 	display: flex;
-	width: 100vw;
-	height: 150px;
-	flex-direction: row;
+    width: 10px;
+    justify-content: center;
+    margin: auto;
+    color: #FFFFFF;
+    font-size: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.item-container{
+	background: #9E9E9E;
+    display: flex;
+    width: calc(100vw - 20px);
+    height: 148px;
+    flex-direction: row;
+    margin: 1px;
+    border-radius: 12px;
 }
 .item-image{
 	height: 130px;

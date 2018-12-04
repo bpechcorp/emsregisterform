@@ -18,32 +18,15 @@ class JList extends React.Component{
 	      useDynamicRowHeight: false,
 	    };
 		this._getRowHeight = this._getRowHeight.bind(this);
-	    this._noRowsRenderer = this._noRowsRenderer.bind(this);
-	    this._onRowCountChange = this._onRowCountChange.bind(this);
 	    this._rowRenderer = this._rowRenderer.bind(this);
 
 	}
 	_getRowHeight(){
-		return 10;
+		return 150;
 	}
-	_noRowsRenderer(){
-		return 20;
-	}
-	_onRowCountChange(){}
 	_rowRenderer({index, isScrolling, key, style}) {
-		if(isScrolling && false){
-			return (
-				<div
-				  className={""}
-				  key={key}
-				  style={style}>
-				  Scrolling...
-				</div>
-			);	
-		}else{
-			return (<JItem key = {key} {...JData[index]}/>)
-		}
-		
+		console.error(index, key, style);
+		return (<JItem key={JData[index].id} style={style} idxItem={index} item={JData[index]}/>)
 	}
 
 	shouldComponentUpdate(nextProps, nextState){
@@ -61,13 +44,11 @@ class JList extends React.Component{
 	                ref="List"
 	                height={height}
 	                overscanRowCount={overscanRowCount}
-	                noRowsRenderer={this._noRowsRenderer}
 	                rowCount={rowCount}
 	                rowHeight={
 	                  useDynamicRowHeight ? this._getRowHeight : listRowHeight
 	                }
 	                rowRenderer={this._rowRenderer}
-	                scrollToIndex={scrollToIndex}
 	                width={width}
 	              />
 	            )}

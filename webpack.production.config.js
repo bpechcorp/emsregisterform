@@ -57,6 +57,10 @@ module.exports = {
       // 'phaser': phaser,
       // 'pixi': pixi,
       // 'p2': p2
-    }
+    },
+    modules : [
+      path.resolve('./src'),
+      path.resolve('./node_modules')
+    ]
   }
 }

@@ -1,6 +1,7 @@
 require("static/css/main.css");
 import React from 'react';
 import JList from 'ui/list';
+import JData from 'data/jdata';
 
 class Main extends React.Component{
 	constructor(props){
@@ -10,8 +11,8 @@ class Main extends React.Component{
 		return false;
 	}
 	render(){
-		return (<div className={"main"}>
-			<JList />
+		return (<div>
+			<JList data = {JData}/>
 		</div>)
 	}
 }

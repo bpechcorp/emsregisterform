@@ -49,7 +49,8 @@ module.exports = {
           loader : 'css-loader',
         }],
       },
-      { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') }
+      { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
+      // {test: /\.json$/, loader: 'file-loader?name=[name].[ext]', exclude : /(node_modules)/}
     ]
   },
   node: {

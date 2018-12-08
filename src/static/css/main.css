@@ -3,6 +3,15 @@
 	width: 100vw;
 	height: 80vh;
 	overflow: hidden;
+	flex-direction: column;
+}
+.list-control{
+	height: 60px;	
+	display: flex;
+	flex-direction: row;
+}
+.btn-sort-delta{
+	margin: 10px;
 }
 .list{
 	flex: 1 1 auto;
@@ -10,16 +19,16 @@
 }
 .item-index{
 	display: flex;
-    width: 10px;
+    width: 40px;
     justify-content: center;
     margin: auto;
-    color: #FFFFFF;
+    color: #607D8B;
     font-size: 25px;
     padding-left: 10px;
     padding-right: 10px;
 }
 .item-container{
-	background: #9E9E9E;
+	border: 1px solid #607D8B;;
     display: flex;
     width: calc(100vw - 20px);
     height: 148px;
@@ -45,4 +54,25 @@
     justify-content: center;
     margin: auto;
     font-size: 71px;
+}
+
+.chart-container{
+	display: flex;
+    flex-grow: 1;
+    padding: 20px;
+}
+.button {    
+    background-color: #607D8B;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button.active{
+	background-color: #4CAF50;
 }

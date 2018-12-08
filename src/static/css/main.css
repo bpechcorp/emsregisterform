@@ -47,6 +47,7 @@
 	margin: auto;
 	text-align: center;
 	width: 20vw;
+    cursor: pointer;
 }
 .item-info-rank{
 	display: flex;
@@ -54,12 +55,16 @@
     justify-content: center;
     margin: auto;
     font-size: 71px;
+    cursor: pointer;
 }
 
 .chart-container{
 	display: flex;
-    flex-grow: 1;
     padding: 20px;
+    width: calc(70% - 40px);
+    height: calc(70% - 40px);
+    align-items: center;
+    margin: auto auto;
 }
 .button {    
     background-color: #607D8B;
@@ -75,4 +80,24 @@
 }
 .button.active{
 	background-color: #4CAF50;
+}
+
+.modal-container{
+	position: absolute;
+    z-index: 9999;
+    background: #FFFFFF;
+    width: 100vw;
+    border-radius: 10px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+.modal-close-btn{
+	display: block;
+    text-align: center;
+    justify-content: center;
+    width: 47px;
+    margin: auto;
+    margin-top: 10px;
+    color: #FFFFFF;
 }

@@ -17,9 +17,17 @@ class ChartItem extends React.Component{
 			let _data = this.props.item.ranks.map(v=>{
 				return {
 					x : v.date * 24*60*60*1000,
-					y : 10000 - v.rank
+					y : v.rank
 				}
 			})
+			let _max = _data[0].y;
+			let _min = _data[0].y;
+			_data.forEach(v=>{
+				_max = Math.max(_max, v.y)
+				_min = Math.min(_min, v.y)
+			})
+			let _rangMax = _max - _min + 10;
+			let _stepRange = Math.floor(_rangMax/ 30);
 			console.log(_data);
 			this._myChart = new Chart(this.refs.mcanvas, {
 			    type: 'line',
@@ -28,7 +36,7 @@ class ChartItem extends React.Component{
 						data: _data,
 						type: 'line',
 						fill : false,											
-						lineColor : 'red'
+						borderColor : 'red'
 					}]
 			    },
 			    options: {
@@ -48,12 +56,13 @@ class ChartItem extends React.Component{
 				            }
 			            }],			            
                     yAxes: [{
-                            display: false,
+                            display: true,
                             ticks: {
-                                beginAtZero: true,
-                                steps: 10,
-                                stepValue: 100,
-                                max: 100
+                                beginAtZero: false,
+                                steps: 30,
+                                stepValue: _stepRange,
+                                max: _max + 5,
+                                min : _min - 5
                             },
                             gridLines: {
 				                display:false
@@ -68,8 +77,9 @@ class ChartItem extends React.Component{
 		// console.error('render ', this.state.idxItem);
 		return(
 			<div className="chart-container">
-				<canvas ref="mcanvas" width={600} height={200} style={{width: 'calc(100% - 20px)', height: 'calc(100% - 20px)'}}/>
+				<canvas ref="mcanvas" width={600} height={200} style={{width: 'calc(100% - 20px)', height: 'calc(100% - 20px)'}}/>	
 			</div>
+
 		)
 	}
 }

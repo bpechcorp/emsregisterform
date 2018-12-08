@@ -5,7 +5,9 @@ import JItem from 'ui/item';
 
 const SORT_MODE = {
 	DEFAULT : 1,
-	BYDELTA : 2
+	BYDELTA : 2,
+	BYTRENDING: 3,
+	BYINCONLY : 4,
 }
 class JList extends React.Component{
 	constructor(props){
@@ -24,40 +26,42 @@ class JList extends React.Component{
 		this._getRowHeight = this._getRowHeight.bind(this);
 	    this._rowRenderer = this._rowRenderer.bind(this);
 	    this._sortByDelta = this._sortByDelta.bind(this);
+	    this._sortByTrending = this._sortByTrending.bind(this);
 	    this._sortByDefault = this._sortByDefault.bind(this);
+	    this._sortByIncOnly = this._sortByIncOnly.bind(this);
+
+
+	    this._sortByAttr = this._sortByAttr.bind(this);
 	}
-	_sortByDelta(){
-		if(this.state.sortMode !== SORT_MODE.BYDELTA){
+	_sortByAttr(type, attr, fallback = true){
+		if(this.state.sortMode !== type){
 			let data = this.props.data;
 			if(data && data.length ){
 				data.sort((a,b)=>{
-					if(b.deltaRank != a.deltaRank) return b.deltaRank - a.deltaRank;
-					return a.currentRank - b.currentRank;
+					if(b[attr] != a[attr]) return b[attr] - a[attr];
+					return b.currentRank - a.currentRank;
 				});
 
 				this.setState({
 					data : [...data],
-					sortMode : SORT_MODE.BYDELTA
+					sortMode : type
 				})
 			}	
 		}else{
-			this._sortByDefault();
-		}		
+			if(fallback) this._sortByDefault();
+		}
+	}
+	_sortByIncOnly(){
+		this._sortByAttr(SORT_MODE.BYINCONLY, 'incpoint', true);
+	}
+	_sortByDelta(){
+		this._sortByAttr(SORT_MODE.BYDELTA, 'deltaRank', true);	
+	}
+	_sortByTrending(){
+		this._sortByAttr(SORT_MODE.BYTRENDING, 'trendingPoint', true);	
 	}
 	_sortByDefault(){
-		if(this.state.sortMode !== SORT_MODE.DEFAULT){
-			let data = this.props.data;
-			if(data && data.length ){
-				data.sort((a,b)=>{					
-					return a.currentRank - b.currentRank;
-				});
-
-				this.setState({
-					data : [...data],
-					sortMode : SORT_MODE.DEFAULT
-				})
-			}	
-		}		
+		this._sortByAttr(SORT_MODE.DEFAULT, 'currentRank', false);		
 	}
 
 	_getRowHeight(){
@@ -65,7 +69,11 @@ class JList extends React.Component{
 	}	
 	_rowRenderer({index, isScrolling, key, style}) {
 		// console.error(index, key, style);
-		return (<JItem key={this.state.data[index].id} style={style} idxItem={index} item={this.state.data[index]}/>)
+		return (<JItem 
+					key={this.state.data[index].id} style={style} 
+					idxItem={index} item={this.state.data[index]}
+					updateModalData={this.props.updateModalData}
+				/>)
 	}
 
 	shouldComponentUpdate(nextProps, nextState){
@@ -78,7 +86,12 @@ class JList extends React.Component{
 		return (
 			<div className={"main"}>
 				<div className="list-control">
-					<div className = {"button btn-sort-delta " + (this.state.sortMode === SORT_MODE.BYDELTA ? 'active' : '') } onClick={this._sortByDelta}>Sort by Delta</div>
+					<div className = {"button btn-sort-delta " + (this.state.sortMode === SORT_MODE.BYDELTA ? 'active' : '') } 
+						onClick={this._sortByDelta}>Sort by Delta</div>
+					<div className = {"button btn-sort-delta " + (this.state.sortMode === SORT_MODE.BYTRENDING ? 'active' : '') } 
+						onClick={this._sortByTrending}>Sort by Trend</div>
+					<div className = {"button btn-sort-delta " + (this.state.sortMode === SORT_MODE.BYINCONLY ? 'active' : '') } 
+						onClick={this._sortByIncOnly}>Sort by Inc</div>
 				</div>
 				<div className={"list"}>
 		          <AutoSizer>

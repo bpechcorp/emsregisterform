@@ -61,8 +61,10 @@
 .chart-container{
 	display: flex;
     padding: 20px;
-    width: calc(70% - 40px);
-    height: calc(70% - 40px);
+    padding-top: 1px;
+    padding-bottom: 1px;
+    width: calc(60% - 40px);
+    height: calc(60% - 40px);
     align-items: center;
     margin: auto auto;
 }

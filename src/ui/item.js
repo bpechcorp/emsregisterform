@@ -1,6 +1,6 @@
 import React from 'react';
 const Colors = ['#009688', '#607D8B', '#F44336', '#f1c40f']
-
+import ChartItem from 'ui/chart-item';
 class JItem extends React.Component{
 	constructor(props){
 		super(props);
@@ -56,6 +56,9 @@ class JItem extends React.Component{
 					</div>
 					<div onClick={this._showData} title={builTip} className="item-info-rank" style={{color:`${this.state.color}`}}>
 						{this.state.deltaRank}						
+					</div>
+					<div className="item-info-rank">
+						<ChartItem item={this.props.item} />
 					</div>
 					{/*<div onClick={this._showData} className="item-info-rank">
 						{this.state.trendingPoint}						

@@ -66,6 +66,6 @@ for(let k in allItems){
 	finalRes.push(allItems[k])
 }
 console.log('number of items ', finalRes.length)
-console.error(finalRes[0])
+console.error(JSON.stringify(finalRes.slice(0, 3)))
 output.write(JSON.stringify(finalRes));
 output.end();

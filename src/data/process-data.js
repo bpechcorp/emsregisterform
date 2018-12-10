@@ -15,7 +15,7 @@ var dupSet = new Set();
 	console.log('number of items ', Object.keys(allItems).length);
 }
 
-for(let i = 17867; i <= 17874; i++){
+for(let i = 17867; i <= 17875; i++){
 	if(!fs.existsSync(`./rank-${i}.json`)) {
 		console.error('not exist file ', i);
 		continue;

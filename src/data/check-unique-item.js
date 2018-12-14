@@ -2,7 +2,7 @@ const fs = require('fs');
 const output = fs.createWriteStream('./data-items.json', {encoding : "utf8"});
 var allItems = []
 var dupSet = new Set();
-var itemsFiles = ['17868', '17873', '17874'];
+var itemsFiles = ['17868', '17873', '17874', '17879'];
 for(let i = 0; i < itemsFiles.length; i++)
 {
 	let content = fs.readFileSync(`./item-${itemsFiles[i]}.json`, {encoding : 'utf8'});

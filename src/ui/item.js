@@ -21,7 +21,7 @@ class JItem extends React.Component{
 		e.preventDefault();
 		e.stopPropagation();
 		if(this.props.updateModalData){
-			console.error('show data item', this.props.item);
+			// console.error('show data item', this.props.item);
 			this.props.updateModalData(this.props.item);
 		}
 	}

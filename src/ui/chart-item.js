@@ -28,7 +28,7 @@ class ChartItem extends React.Component{
 			})
 			let _rangMax = _max - _min + 10;
 			let _stepRange = Math.floor(_rangMax/ 30);
-			console.log(_data);
+			// console.log(_data);
 			this._myChart = new Chart(this.refs.mcanvas, {
 			    type: 'line',
 			    data: {

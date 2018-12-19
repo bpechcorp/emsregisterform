@@ -1,7 +1,7 @@
 const Data = require('data/data.json');
 
 //find current rank
-let date = 17883;//Math.floor(Date.now()/ (1000*60*60*24));
+let date = 17884;//Math.floor(Date.now()/ (1000*60*60*24));
 var _data = Data;
 // console.log(_data.length, date,  _data.slice(0,10));
 let def = _data.length + 10;

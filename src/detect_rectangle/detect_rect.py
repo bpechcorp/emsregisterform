@@ -107,7 +107,7 @@ def run(path):
     _per = _persp_transform(img, list_4_points)
     cv2.imwrite("crop.png", _per)
     _sp = _per.shape 
-    bar_img = _per[0:int(_sp[0]*0.12), int(_sp[1]*0.5):int(_sp[1]*0.85) ]
+    bar_img = _per[0:int(_sp[0]*0.12), int(_sp[1]*0.48):int(_sp[1]*0.85) ]
     cv2.imwrite("bar.png", bar_img)
     # return list_point
     return _per

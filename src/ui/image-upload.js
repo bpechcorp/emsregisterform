@@ -65,7 +65,7 @@ class ImageUpload extends React.Component {
             {$imagePreview}
           </div>
         </div>
-        {imagePreviewUrl?(<div style={{display:'flex', margin : '0 auto'}}>
+        {imagePreviewUrl?(<div style={{display:'flex', margin : '0 auto', marginBottom:'10vh'}}>
             <div className="btn-submit-style shiny-btn" style={{ background: '#00b6f0'}}
               type="submit" 
               onClick={(e)=>this._handleSubmit(e)}>Verify</div>

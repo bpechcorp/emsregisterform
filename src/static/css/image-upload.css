@@ -4,6 +4,7 @@
   flex-direction: column;
   margin: 0 auto;
   flex-grow: 1;
+  padding-bottom: 10vh;
 }
 .fileInput {
   border-bottom: 4px solid #d3d3d3;

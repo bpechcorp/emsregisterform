@@ -44,12 +44,28 @@ module.exports = {
     rules: [
       {
         test : /\.css$/,
-        include: [path.join(__dirname, 'src', 'static', 'css')],
+        include: [path.join(__dirname, 'src', 'static', 'css'), 
+                  path.join(__dirname, 'node_modules')],
         use : ['style-loader', {
           loader : 'css-loader',
         }],
       },
-      { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
+      {test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
+      {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader'},
+      {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=65000&mimetype=application/font-woff"},
+      {test: /\.ttf(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader?limit=10000&mimetype=application/octet-stream'},
+      // {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader?limit=10000&mimetype=image/svg+xml'},
+      {
+          test: /\.(jpe?g|png|gif|jsapi|ico|svg|gif|mp3)$/, 
+          use: [
+              {
+                  loader: 'file-loader',
+                  options: {
+                      name: '[name].[ext]',
+                  }
+              }
+          ]
+      },
       // {test: /\.json$/, loader: 'file-loader?name=[name].[ext]', exclude : /(node_modules)/}
     ]
   },

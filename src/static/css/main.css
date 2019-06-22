@@ -5,6 +5,16 @@
 	overflow: hidden;
 	flex-direction: column;
 }
+.content-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    background-size: cover;
+    background-image: url("https://b-f18-zpg.zdn.vn/6244536075780440940/1985b6b035ded18088cf.jpg");
+    background-position: center;
+}
 .list-control{
 	height: 60px;	
 	display: flex;

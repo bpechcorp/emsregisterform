@@ -44,7 +44,22 @@ module.exports = {
       // { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
       // { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },
       // { test: /p2\.js/, use: ['expose-loader?p2'] },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+      { test: /\.css$/, include: /node_modules/, loaders: ['style-loader', 'css-loader']},
+      {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader'},
+      {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=65000&mimetype=application/font-woff"},
+      {test: /\.ttf(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader?limit=10000&mimetype=application/octet-stream'},
+      // {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader?limit=10000&mimetype=image/svg+xml'},
+      {
+          test: /\.(jpe?g|png|gif|jsapi|ico|svg|gif|mp3)$/, 
+          use: [
+              {
+                  loader: 'file-loader',
+                  options: {
+                      name: '[name].[ext]',
+                  }
+              }
+          ]
+      },
     ]
   },
   node: {

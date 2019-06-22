@@ -20,13 +20,45 @@ import {
   Table
 } from 'reactstrap';
 
+class EditText extends React.Component{
+  constructor(props){
+    super(props)
+    this.getValue = this.getValue.bind(this);
+  }
+  getValue(){
+    if(this.refs && this.refs.input){
+      return this.refs.input.value || this.props.state[this.props.attrkey] || "";
+    }
+  }
+  render(){
+    if(this.props.edit){
+      return (<input ref="input" type={this.props.type} className="form-control" 
+              placeholder={this.props.state[this.props.attrkey]} />
+            )  
+    }
+      return (<div>{this.props.state[this.props.attrkey]}</div>)
+    
+    
+  }
+}
 class InfoUser extends React.Component{
 	constructor(props){
 		super(props);
+    this.getValue = this.getValue.bind(this);
 	}
+  getValue(){
+    const item = {...(this.props.state||{})};
+    ['name', 'phone', 'address'].forEach(v=>{
+      if(this.refs && this.refs[v] && this.refs[v].getValue){
+        const vv = this.refs[v].getValue();
+        item[v] = vv || "";
+      }
+    })
+    return item;
+  }
   render(){
-    const item = this.props.state;
-    if(!item) return null;
+    if(!this.props.state) return null;
+    const item = this.props.state || {};
     return (<Table responsive borderless className={cx('mb-0', s.usersTable)}>
                     <thead>
                       <tr>
@@ -36,16 +68,22 @@ class InfoUser extends React.Component{
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Name</td>
-                        <td>{item.name}</td>
+                        {<td>Name</td>}
+                        <td>                          
+                          <EditText ref="name" edit={this.props.edit} type="name" state={item} attrkey="name"/>
+                        </td>
                       </tr>
                       <tr>
                         <td>Phone</td>
-                        <td>{item.phone}</td>
+                        <td>                          
+                          <EditText ref="phone" edit={this.props.edit} type="name" state={item} attrkey="phone"/>
+                        </td>
                       </tr>
                       <tr>
                         <td>Address</td>
-                        <td>{item.address}</td>
+                        <td>                          
+                          <EditText ref="address" edit={this.props.edit} type="name" state={item} attrkey="address"/>
+                        </td>
                       </tr>
                      </tbody>
                 </Table>)

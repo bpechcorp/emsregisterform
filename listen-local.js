@@ -95,6 +95,7 @@ class Firebase{
 							from : resp.from || {},
 							to : resp.to || {},
 							status : 0,
+							url : item.url
 						}
 						databaseTracking.child(item.key).set(trackingItem, (err)=>{
 							numtask--;

@@ -48,11 +48,17 @@ class Dashboard extends Component {
   };
 
   state = {
-    isDropdownOpened: false
+    isDropdownOpened: false,
+    ver : 0,
   };
 
   componentDidMount() {
     this.props.dispatch(fetchPosts());
+    DataModelInstance.onChangeData(()=>{
+      this.setState({
+        ver : this.state.ver+1,
+      })
+    })
   }
 
   toggleDropdown = () => {

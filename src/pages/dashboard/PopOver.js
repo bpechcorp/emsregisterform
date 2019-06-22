@@ -21,6 +21,7 @@ import {
   DropdownItem,
   Table
 } from 'reactstrap';
+import DataModelInstance from './dataPostInstance';
 
 let bindFunction= null;
 const demoImage = 'https://b-f18-zpg.zdn.vn/7840656209396259228/f03727909cf878a621e9.jpg'
@@ -33,6 +34,8 @@ class PopOver extends React.Component{
 		}
 		this._clickClose = this._clickClose.bind(this);
 		this._clickVerify = this._clickVerify.bind(this);
+		this._edit2 = this._edit2.bind(this);
+		this._edit1 = this._edit1.bind(this);
 	}
 	componentDidUpdate(){
 		bindFunction = (item)=>{
@@ -45,21 +48,31 @@ class PopOver extends React.Component{
 		bindFunction = null;
 	}
 	_clickVerify(){
-		const barcode = (this.state.item || {}).barcode;
-		const Messenger = window.Messenger;
-		if(Messenger && typeof Messenger === 'function'){
-			Messenger().post({
-			  message: `Verify item ${  barcode}`,
-			  type: 'info',
-			  showCloseButton: true
-			});
+		const nItem = {...this.state.item} || {};
+		if(this.state.edit1){
+			if(this.refs.Sender && this.refs.Sender.getValue){
+				const v = this.refs.Sender.getValue();
+				if(v && typeof v === 'object'){
+					nItem.from = v;
+				}
+			}
 		}
-		
-		const nItem = this.state.item || {};
+		if(this.state.edit2){
+			if(this.refs.Receiver && this.refs.Receiver.getValue){
+				const v = this.refs.Receiver.getValue();
+				if(v && typeof v === 'object'){
+					nItem.to = v;
+				}
+			}
+		}
 		nItem.status = true;
 		this.setState({
-			item : nItem
+			item : nItem,
+			edit1 : false,
+			edit2 : false,
 		})
+		DataModelInstance.updateItem(nItem);
+
 
 	}
 	_clickClose(){
@@ -67,10 +80,21 @@ class PopOver extends React.Component{
 			item : null
 		})
 	}
+	_edit1(){
+		this.setState({
+			edit1 : true
+		})
+	}
+	_edit2(){
+		this.setState({
+			edit2 : true
+		})
+	}
 
 	render(){
 		if(!this.state.item) return null;
 		const item = this.state.item || {};
+		const editable = !item.status;
 		return (<div style={{position: 'absolute', zIndex : '1000',
 							background: '#cccbca', 
 							width: '88vw', height: '80vh', padding: '10px'}}>
@@ -85,9 +109,10 @@ class PopOver extends React.Component{
 		                  <h5>
 		                    <i className="fa fa-user mr-xs opacity-70" />{' '}
 		                    Sender
+		                    {editable ? <i onClick={this._edit1} className="fa fa-edit" style={{float:'right'}}/> : null}
 		                  </h5>
 		              }>
-				      <InfoUser state={this.state.item.from} />
+				      <InfoUser ref="Sender" state={this.state.item.from} edit={this.state.edit1}/>
 		            </Widget>
 		      	</Row>
 		      	<Row>
@@ -96,16 +121,17 @@ class PopOver extends React.Component{
 		                  <h5>
 		                    <i className="fa fa-user mr-xs opacity-70" />{' '}
 		                    Receiver
+		                    {editable ? <i onClick={this._edit2} className="fa fa-edit" style={{float:'right'}}/> : null}
 		                  </h5>
 		              }>
-				      <InfoUser state={this.state.item.to} />
+				      <InfoUser ref="Receiver" state={this.state.item.to} edit={this.state.edit2}/>
 		            </Widget>
 		      	</Row>
 		      </Col>
 		      <Col sm={12} md={6} className="my-auto">
 		      	<ModalImage
-	      			small={demoImage}
-			  		large={demoImage}
+	      			small={item.url}
+			  		large={item.url}
 			  		hideDownload
 				  	hideZoom
 				  	onClose={null} />

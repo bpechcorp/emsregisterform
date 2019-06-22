@@ -141,4 +141,4 @@ class Firebase{
 }
 const instance = new Firebase();
 export default instance;
-window.$fbcon = instance;
+// window.$fbcon = instance;

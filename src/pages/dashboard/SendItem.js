@@ -24,7 +24,7 @@ class SendItem extends React.Component{
 		      <td>{item.from.phone}</td>
 		      <td>{item.from.address}</td>
 		      <td>
-		        <span className="py-0 px-1 bg-success rounded text-white">{item.status ? 1 : 0}</span>
+		        <span className={`py-0 px-1 bg-${item.status ? "success": "warning"} rounded text-white`}>{item.status ? 'OK' : 'Waiting'}</span>
 		      </td>
 		    </tr>)
 	}

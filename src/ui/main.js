@@ -51,6 +51,8 @@ class Main extends React.Component{
 			  "showMethod": "fadeIn",
 			  "hideMethod": "fadeOut"
 			}
+			ToastStr.options = Object.assign(ToastStr.options, options);
+			ToastStr.info(msg);
 		} else {
 			options = {
 			  "closeButton": false,
@@ -69,9 +71,10 @@ class Main extends React.Component{
 			  "showMethod": "fadeIn",
 			  "hideMethod": "fadeOut"
 			}
+			ToastStr.options = Object.assign(ToastStr.options, options);
+			ToastStr.error(msg);
 		}
-		ToastStr.options = Object.assign(ToastStr.options, options);
-		ToastStr.info(msg);
+		
 	}
 	_updateModalData(data){
 		this.setState({

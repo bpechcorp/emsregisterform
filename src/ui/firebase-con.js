@@ -33,7 +33,8 @@ var storageRef = firebase.storage().ref();
 // mountainsRef.fullPath === mountainImagesRef.fullPath    // false
 
 // Get a reference to the database service
-var database = firebase.database();
+var databaseRef = firebase.database().ref();
+databaseRef = databaseRef.child('newEvents');
 var storageRef = firebase.storage().ref();
 
 class Firebase{
@@ -49,7 +50,17 @@ class Firebase{
 				console.log('Uploaded file', snapshot);
 				refImage.getDownloadURL().then(function(url) {
 					console.error('download url', url);
-					resolve(url);
+					setTimeout(()=>{
+						let key = databaseRef.push().key;
+						databaseRef.child(key).update({
+							key : key,
+							url : url
+						}, (error)=>{
+							if(error) console.error('update error: ', error);
+							if(error) return reject(error);
+							resolve(url);
+						})
+					},0)
 				}).catch(reject)
 			}).catch(reject);
 		})

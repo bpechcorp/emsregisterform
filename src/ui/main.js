@@ -1,6 +1,7 @@
 require("static/css/main.css");
 import React from 'react';
 import ImageUpload from 'ui/image-upload';
+// import {ToastsContainer, ToastsStore} from 'react-toasts';
 // import JList from 'ui/list';
 // import JData from 'data/jdata';
 // import Modal from 'ui/modal';
@@ -17,18 +18,24 @@ class Main extends React.Component{
 			modalData : null
 		}
 		this._updateModalData = this._updateModalData.bind(this);
+		this._createToast = this._createToast.bind(this);
 	}
 	shouldComponentUpdate(nextProps, nextState){
 		return this.state.modalData !== nextState.modalData;
+	}
+	_createToast(msg){
+		// ToastsStore.success("Hey, you just clicked!")
 	}
 	_updateModalData(data){
 		this.setState({
 			modalData : data
 		})
 	}
+	// <ToastsContainer store={ToastsStore}/>
 	render(){
 		return (<div style={{width: '100vw', height : '100vh'}}>
-			<ImageUpload />
+			<ImageUpload createToast={this._createToast}/>
+			
 		</div>)
 	}
 }

@@ -1,9 +1,12 @@
 # emsregisterform - Extract information from EMS (VNPOST) register forms
 This project is our project in Hackathon HCM 2019, belong VNPOST track.
 
+## Ideas: 
+* Sử dụng ML trong việc nhận dạng chữ in, viết tay, nhằm giảm thời gian xử lý các giấy tờ. Ứng dụng cho VNPOST ở quy trình tiếp nhận chuyển phát.
 ## Vấn đề: 
 * Lĩnh vực hoạt động chính của VNPOST là bưu chính, trong đó gồm: Chuyển phát thư tín, bưu phẩm, chuyển tiền, bảo hiểm... trong đó lĩnh vực bưu chính là cốt lõi.
-* Việc tối ưu hoá chi phí, tăng khả năng phục vụ và giảm thời gian xử lý các đơn hàng luôn là ưu tiên của các doanh nghiệp dịch vụ vận chuyển như vnpost. Một trong các quy trình có thể giảm thời gian xử lý: quy trình tiếp nhận đăng ký chuyển phát.
+* Việc tối ưu hoá chi phí, tăng khả năng phục vụ và giảm thời gian xử lý các đơn hàng luôn là ưu tiên của các doanh nghiệp dịch vụ vận chuyển như vnpost. 
+* Trong khuôn khổ thời gian, project chỉ tối ưu hoá một trong các quy trình có thể giảm thời gian xử lý: quy trình tiếp nhận đăng ký chuyển phát.
 ## Mô tả chi tiết:
 * Mô tả quy trình tiếp nhận đăng ký chuyển phát:
 ** Khách hàng đến bưu cục, lấy số tự động, nhận form đăng ký chuyển phát. 

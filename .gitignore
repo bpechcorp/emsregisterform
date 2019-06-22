@@ -1,0 +1,12 @@
+duc
+.DS_Store
+data/
+data/pdf/*
+data/raw/*
+data/skew/*
+output/*
+.vscode/
+__pycache__
+*.pyc
+*.weights
+.ipynb_checkpoints/

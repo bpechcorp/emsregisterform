@@ -27,7 +27,7 @@ class Main extends React.Component{
 		})
 	}
 	render(){
-		return (<div className="content-container">
+		return (<div style={{width: '100vw', height : '100vh'}}>
 			<ImageUpload />
 		</div>)
 	}

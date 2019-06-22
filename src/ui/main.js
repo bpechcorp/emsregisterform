@@ -27,7 +27,7 @@ class Main extends React.Component{
 	}
 	render(){
 		return (<div>
-			<p>{"test"}</p>
+			<input type="file" accept="image/*">
 		</div>)
 	}
 }

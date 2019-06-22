@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, jsonify, current_app
 import argparse
 import subprocess
 import pytesseract 
-from utils import *
 import json 
 
 

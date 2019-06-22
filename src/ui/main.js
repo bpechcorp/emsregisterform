@@ -1,5 +1,6 @@
 require("static/css/main.css");
 import React from 'react';
+import ImageUpload from 'ui/image-upload';
 // import JList from 'ui/list';
 // import JData from 'data/jdata';
 // import Modal from 'ui/modal';
@@ -27,7 +28,7 @@ class Main extends React.Component{
 	}
 	render(){
 		return (<div>
-			<input type="file" accept="image/*"/>
+			<ImageUpload />
 		</div>)
 	}
 }

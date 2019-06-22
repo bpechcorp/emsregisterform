@@ -40,11 +40,15 @@ module.exports = {
   ],
   module: {
     rules: [
-      { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
-      // { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
-      // { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },
-      // { test: /p2\.js/, use: ['expose-loader?p2'] },
-      { test: /\.css$/, include: /node_modules/, loaders: ['style-loader', 'css-loader']},
+      {
+        test : /\.css$/,
+        include: [path.join(__dirname, 'src', 'static', 'css'), 
+                  path.join(__dirname, 'node_modules')],
+        use : ['style-loader', {
+          loader : 'css-loader',
+        }],
+      },
+      {test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
       {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader'},
       {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=65000&mimetype=application/font-woff"},
       {test: /\.ttf(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader?limit=10000&mimetype=application/octet-stream'},
@@ -59,7 +63,7 @@ module.exports = {
                   }
               }
           ]
-      },
+      }
     ]
   },
   node: {

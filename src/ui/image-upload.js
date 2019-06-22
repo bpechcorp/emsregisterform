@@ -25,13 +25,16 @@ class ImageUpload extends React.Component {
       this.setState({
         cstate : STATE.PENDING,
       })
+      this.props.createToast(`Uploading`, true);
       FireBaseCon.uploadFile(this.state.file)
         .then(()=>{
+          this.props.clearToast();
           this.setState({
             cstate: STATE.COMPLETE
           })
         }).catch((err)=>{
           console.error(err);
+          this.props.clearToast();
           // ZToast.makeToast(`Upload fail just retry!`);
           this.props.createToast(`Upload fail just retry!`);
           this.setState({

@@ -1,6 +1,5 @@
 import {databaseTracking} from './firebase-con';
-import ToastStr from 'toastr';
-
+// import ToastStr from 'toastr';
 const fakeData = {
     "barcode": "MK023948234",
     "from": {
@@ -62,6 +61,11 @@ class DataModel {
 					|| this.diffItem(oldSet[item.id].to, item.to)){
 					change = true;
 				}
+			}else{
+				const user_name = item.from.name;
+				setTimeout(()=>{
+					this.createToast(`You just have new Order from ${  user_name}`);
+				}, 0);
 			}
 			newList.push(item);
 		}
@@ -83,7 +87,30 @@ class DataModel {
 		})
 		this.createToast(`Updating status of Item ${newItem.barcode}!`, true);
 	}
-	createToast(msg, progress, tag = 'error'){
+	createToast(msg){
+		try{
+			if(window.Messenger && typeof window.Messenger === 'function'){
+				Messenger.options = {
+			      extraClasses: 'messenger-fixed messenger-on-top',
+			      theme: 'air',
+			    };
+				Messenger().post({
+				  message: msg,
+				  type: 'info',
+				  showCloseButton: true
+				});
+			}
+		}catch(err){
+			console.error(err);
+		}
+		
+		// Messenger().post({
+		//   message: 'There was an explosion while processing your request.',
+		//   type: 'error',
+		//   showCloseButton: true
+		// });
+	}
+	createToast2(msg, progress, tag = 'error'){
 		// ToastsStore.success("Hey, you just clicked!")
 		let options = {}
 		if(progress){

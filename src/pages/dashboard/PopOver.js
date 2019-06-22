@@ -109,7 +109,7 @@ class PopOver extends React.Component{
 		                  <h5>
 		                    <i className="fa fa-user mr-xs opacity-70" />{' '}
 		                    Sender
-		                    {editable ? <i onClick={this._edit1} className="fa fa-edit" style={{float:'right'}}/> : null}
+		                    {editable ? <i onClick={this._edit1} className="fa fa-edit" style={{float:'right', cursor: 'pointer'}}/> : null}
 		                  </h5>
 		              }>
 				      <InfoUser ref="Sender" state={this.state.item.from} edit={this.state.edit1}/>
@@ -121,7 +121,7 @@ class PopOver extends React.Component{
 		                  <h5>
 		                    <i className="fa fa-user mr-xs opacity-70" />{' '}
 		                    Receiver
-		                    {editable ? <i onClick={this._edit2} className="fa fa-edit" style={{float:'right'}}/> : null}
+		                    {editable ? <i onClick={this._edit2} className="fa fa-edit" style={{float:'right', cursor: 'pointer'}}/> : null}
 		                  </h5>
 		              }>
 				      <InfoUser ref="Receiver" state={this.state.item.to} edit={this.state.edit2}/>
@@ -133,7 +133,6 @@ class PopOver extends React.Component{
 	      			small={item.url}
 			  		large={item.url}
 			  		hideDownload
-				  	hideZoom
 				  	onClose={null} />
 		      </Col>
         	</Row>

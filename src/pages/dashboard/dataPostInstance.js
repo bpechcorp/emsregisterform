@@ -32,6 +32,7 @@ class DataModel {
 		this.createToast = this.createToast.bind(this);
 		this.diffItem = this.diffItem.bind(this);
 		this.cbWhenChangeData = null;
+		this._notif = {};
 	}
 	onChangeData(cbWhenChangeData){
 		this.cbWhenChangeData = cbWhenChangeData;
@@ -63,8 +64,12 @@ class DataModel {
 				}
 			}else{
 				const user_name = item.from.name;
+				const toast_id = item.id;
 				setTimeout(()=>{
-					this.createToast(`You just have new Order from ${  user_name}`);
+					if(!item.status && !this._notif[toast_id]){
+						this._notif[toast_id] = 1;
+						this.createToast(`You just have new Order from ${  user_name}`, toast_id);
+					}
 				}, 0);
 			}
 			newList.push(item);
@@ -85,9 +90,9 @@ class DataModel {
 				databaseTracking.child(newItem.id).set(newItem);
 			}
 		})
-		this.createToast(`Updating status of Item ${newItem.barcode}!`, true);
+		this.createToast(`Updating status of Item ${newItem.barcode}!`);
 	}
-	createToast(msg){
+	createToast(msg, nativeKey){
 		try{
 			if(window.Messenger && typeof window.Messenger === 'function'){
 				Messenger.options = {
@@ -99,6 +104,14 @@ class DataModel {
 				  type: 'info',
 				  showCloseButton: true
 				});
+			}
+			if(nativeKey && window.Notification){
+				if(!localStorage.getItem(nativeKey)){
+					new window.Notification(`Tracking Order`, {
+						body : msg,
+					})
+				}
+				localStorage.setItem(nativeKey, '1');
 			}
 		}catch(err){
 			console.error(err);

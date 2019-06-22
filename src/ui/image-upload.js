@@ -48,15 +48,15 @@ class ImageUpload extends React.Component {
 
     return (
       <div className="content-container">
-        <div className="previewComponent">
+        <div className="previewComponent" style ={!!imagePreviewUrl? {background: 'rgba(108, 117, 125, 0.4)',borderRadius: '18px'}: {}}>
           {!imagePreviewUrl ? 
           (<div className="formContainer">
-            <div className="inputfile-container text-center">
+            <div className="inputfile-container text-center" style={{display: 'flex',flex: 1,flexDirection: 'column-reverse'}}>
               <input type="file" name="file2" onChange={this._handleImageChange.bind(this)}
                 style={{display : 'none', overflow : 'hidden'}}
                 id="file2" className="inputfile" multiple=""/>
               <label className="shiny-btn" onChange={this._handleImageChange.bind(this)}
-                htmlFor="file2">
+                htmlFor="file2" style={{height: '25x'}}>
                   {"Upload Image"}
                 </label>
             </div>                    

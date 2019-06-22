@@ -12,10 +12,11 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    background-color: #eee;
-    /*background-size: cover;
-    background-image: url("https://b-f18-zpg.zdn.vn/6244536075780440940/1985b6b035ded18088cf.jpg");
-    background-position: center;*/
+    /*background-color: #fff;*/
+    background-size: cover;
+    /*background-image: url("https://b-f18-zpg.zdn.vn/6244536075780440940/1985b6b035ded18088cf.jpg");*/
+    background-image: url("https://b-f18-zpg.zdn.vn/6103929289133269162/68e382e8a48140df1990.jpg");
+    background-position: center;
 }
 .list-control{
 	height: 60px;	

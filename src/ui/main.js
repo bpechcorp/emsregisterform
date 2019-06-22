@@ -1,8 +1,13 @@
 require("static/css/main.css");
 import React from 'react';
-import JList from 'ui/list';
-import JData from 'data/jdata';
-import Modal from 'ui/modal';
+// import JList from 'ui/list';
+// import JData from 'data/jdata';
+// import Modal from 'ui/modal';
+// {this.state.modalData ? 
+// 				<Modal 
+// 					item = {this.state.modalData}
+// 					updateModalData={this._updateModalData} />: null}
+// 			<JList data = {JData} updateModalData={this._updateModalData}/>
 
 class Main extends React.Component{
 	constructor(props){
@@ -22,11 +27,7 @@ class Main extends React.Component{
 	}
 	render(){
 		return (<div>
-			{this.state.modalData ? 
-				<Modal 
-					item = {this.state.modalData}
-					updateModalData={this._updateModalData} />: null}
-			<JList data = {JData} updateModalData={this._updateModalData}/>
+			<p>{"test"}</p>
 		</div>)
 	}
 }

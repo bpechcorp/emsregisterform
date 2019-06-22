@@ -16093,6 +16093,10 @@ var ImageUpload = function (_React$Component) {
 
       var reader = new FileReader();
       var file = e.target.files[0];
+      this.setState({
+        file: null,
+        imagePreviewUrl: 'loading'
+      });
 
       reader.onloadend = function () {
         _this2.setState({
@@ -16111,7 +16115,7 @@ var ImageUpload = function (_React$Component) {
       var imagePreviewUrl = this.state.imagePreviewUrl;
 
       var $imagePreview = null;
-      if (imagePreviewUrl) {
+      if (imagePreviewUrl && imagePreviewUrl !== 'loading') {
         $imagePreview = _react2.default.createElement('img', { src: imagePreviewUrl, style: { maxHeight: '300px' } });
       } else {
         $imagePreview = null;

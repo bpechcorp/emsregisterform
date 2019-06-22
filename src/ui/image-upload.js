@@ -25,6 +25,10 @@ class ImageUpload extends React.Component {
 
     let reader = new FileReader();
     let file = e.target.files[0];
+    this.setState({
+      file : null,
+      imagePreviewUrl : 'loading'
+    })
 
     reader.onloadend = () => {
       this.setState({
@@ -39,7 +43,7 @@ class ImageUpload extends React.Component {
   render() {
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
-    if (imagePreviewUrl) {
+    if (imagePreviewUrl && imagePreviewUrl !== 'loading') {
       $imagePreview = (<img src={imagePreviewUrl} style={{maxHeight: '300px'}} />);
     } else {
       $imagePreview = null;

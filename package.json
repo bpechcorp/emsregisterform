@@ -5,10 +5,16 @@
   "engines": {
     "node": "8.10.0"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "dependencies": {
     "@babel/polyfill": "7.0.0-beta.32",
     "awesome-bootstrap-checkbox": "^1.0.1",
+    "axios": "^0.19.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "bootstrap": "4.2.1",
@@ -19,6 +25,7 @@
     "express": "^4.16.2",
     "express-graphql": "^0.6.11",
     "express-jwt": "^5.3.0",
+    "firebase": "^6.2.2",
     "font-awesome": "^4.7.0",
     "glyphicons-halflings": "^1.9.1",
     "graphql": "^0.11.7",
@@ -42,6 +49,7 @@
     "react-cookie": "^1.0.5",
     "react-dom": "16.7.0",
     "react-google-maps": "^9.4.5",
+    "react-modal-image": "^2.3.2",
     "react-redux": "^5.0.4",
     "react-router": "4.3.1",
     "react-router-dom": "4.3.1",
@@ -145,9 +153,18 @@
     "jquery": "3.3.1"
   },
   "lint-staged": {
-    "*.{js,jsx}": ["eslint --fix", "git add --force"],
-    "*.{json,graphql}": ["prettier --write", "git add --force"],
-    "*.{css,less,scss,sss}": ["stylelint --fix", "git add --force"]
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add --force"
+    ],
+    "*.{json,graphql}": [
+      "prettier --write",
+      "git add --force"
+    ],
+    "*.{css,less,scss,sss}": [
+      "stylelint --fix",
+      "git add --force"
+    ]
   },
   "scripts": {
     "precommit": "lint-staged",

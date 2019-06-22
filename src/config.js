@@ -33,9 +33,9 @@ module.exports = {
   },
 
   defaultMeta: {
-    title: 'React Dashboard',
+    title: 'VNPost Tracking',
     description:
-      'React Dashboard Starter project based on react-router 4, redux, graphql, bootstrap',
+      'VNPost Tracking System',
   },
 
   // Authentication

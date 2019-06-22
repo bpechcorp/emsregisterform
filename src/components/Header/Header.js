@@ -77,7 +77,7 @@ class Header extends React.Component {
           </NavItem>
         </Nav>
         <Nav className="ml-auto">
-          <NavItem className={cx('', s.headerIcon)}>
+          {/* <NavItem className={cx('', s.headerIcon)}>
             <Button>
               <Icon glyph="mail"/>
               <span>8</span>
@@ -93,11 +93,11 @@ class Header extends React.Component {
             <Button>
               <Icon glyph="settings"/>
             </Button>
-          </NavItem>
+          </NavItem> */}
           <Dropdown isOpen={isOpen} toggle={this.toggleDropdown}>
             <DropdownToggle nav>
               <img className={cx('rounded-circle mr-sm', s.adminPhoto)} src={photo} alt="administrator" />
-              <span className="text-body">Administrator</span>
+              <span className="text-body">Employee</span>
               <i className={cx('fa fa-angle-down ml-sm', s.arrow, {[s.arrowActive]: isOpen})} />
             </DropdownToggle>
             <DropdownMenu style={{width: '100%'}}>

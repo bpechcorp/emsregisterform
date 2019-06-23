@@ -77,7 +77,7 @@ class Dashboard extends Component {
           <BreadcrumbItem>Tracking Order</BreadcrumbItem>
           <BreadcrumbItem active>Tracking</BreadcrumbItem>
         </Breadcrumb>
-        <h1 className="mb-lg">Waiting</h1>
+        <h1 className="mb-lg">Tracking</h1>
         <Row>
           <Col sm={12} md={12}>
             <Widget
@@ -92,7 +92,7 @@ class Dashboard extends Component {
                   </div>
                   <h5 className="mt-0 mb-3">
                     <i className="fa fa-user mr-xs opacity-70" />{' '}
-                    Users
+                    Waiting
                   </h5>
                 </div>
               }

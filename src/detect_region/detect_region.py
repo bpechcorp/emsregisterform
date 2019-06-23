@@ -27,11 +27,11 @@ def run(path):
     _to_box_ratio[2] = int(sp[0] * _to_box_ratio[2])
     _to_box_ratio[1] = int(sp[1] * _to_box_ratio[1])
     _to_box_ratio[3] = int(sp[1] * _to_box_ratio[3])
-
-    from_img = img[from_box_ratio[0]:from_box_ratio[2],from_box_ratio[1]:from_box_ratio[3]]
+    # print (_from_box_ratio)
+    from_img = img[_from_box_ratio[0]:_from_box_ratio[2],_from_box_ratio[1]:_from_box_ratio[3]]
     # show(from_img)
     save_image("region_from.png", from_img)
-    to_img = img[to_box_ratio[0]:to_box_ratio[2],to_box_ratio[1]:to_box_ratio[3]]
+    to_img = img[_to_box_ratio[0]:_to_box_ratio[2],_to_box_ratio[1]:_to_box_ratio[3]]
     # show(to_img)
     save_image("region_to.png", to_img)
 

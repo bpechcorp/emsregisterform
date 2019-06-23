@@ -19,4 +19,4 @@ This project is our project in Hackathon HCM 2019, belong VNPOST track.
 ** Khách hàng điền form đăng ký chuyển phát, sau đó chờ đến lượt gọi.
 ** Khách hàng chuyển form đăng ký kèm thư tín/hàng hoá cho nhân viên bưu cục
 ** Nhân viên bưu cục scan form chuyển phát vào phần mềm quản lý, module nhận dạng và bóc tách tự động điền thông tin cần thiết vào phần mềm. Sau đó nhân viên bưu cục tiếp tục xử lý đơn chuyển phát.
-* Với giả định 1triệu đơn/năm, VNPOST sẽ tiết kiệm được 4.000.000 phút/năm ~ 13,88 tỷ/năm
+* Với ~100.000 giao dịch mỗi ngày, VNPOST sẽ tiết kiệm được 73.000.000 phút/năm ~ 34,80 tỷ/năm

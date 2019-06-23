@@ -11,6 +11,9 @@ from barcode import readBar
 from detect_region import detect_region
 
 import crnn_ocr 
+from ctpn.get_boxes import LineDetector
+
+line_detector = LineDetector("ctpn/network/ctpn.pb") 
 
 app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))

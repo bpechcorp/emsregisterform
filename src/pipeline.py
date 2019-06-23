@@ -34,8 +34,13 @@ app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 DPI = 300
 ALL_LINE_SIZE = (1000, 64)
-all_ocrer = crnn_ocr.CRNNOCR(model_path="../duc/vnpost_ocr/ocr.model", normalize_size=ALL_LINE_SIZE, 
-        alphabet_path="../duc/vnpost_ocr/char")
+all_ocrer = crnn_ocr.CRNNOCR(model_path="/data/quocpbc/vnpost/ocr.model.epoch_150", normalize_size=ALL_LINE_SIZE, 
+        alphabet_path="/data/quocpbc/vnpost/data/ocr_data/char", 
+        beamsearch_lib="/data/quocpbc/document_digitization/ocr/crnn/beamsearch/cpp/proj/TFWordBeamSearch.so",
+        corpus="/data/quocpbc/vnpost/data/ocr_data/corpus",
+        word_chars="/data/quocpbc/vnpost/data/ocr_data/word_chars"
+        )
+# normalize_size=(opt.imgW, opt.imgH), beamsearch_lib=opt.beamsearch_lib, corpus=opt.corpus, word_chars=opt.word_chars)        
 
 root_dir = os.getcwd()
 

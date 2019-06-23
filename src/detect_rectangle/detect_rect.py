@@ -70,6 +70,16 @@ def _persp_transform(img, s_points):
 
 def save_image(fname, img):
     cv2.imwrite(fname, cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
+def sort4point(lp):
+    # print (">>>",lp)
+    s1 = sorted(lp, key=lambda x:x[0])
+    s11 = s1[:2]
+    s12 = s1[2:]
+    s11 = sorted(s11, key=lambda x:x[1]) 
+    s12 = sorted(s12, key=lambda x:x[1], reverse=True)
+    return s11 + s12
+def save_image(fname, img):
+    cv2.imwrite(fname, cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
 
 def run(path):
     img = read_rgb(path)
@@ -106,12 +116,15 @@ def run(path):
     img = read_rgb(path)
     _sp = img.shape
     list_4_points = [(int(e[0]*_sp[1]), int( e[1]*_sp[0])) for e in list_point]
+    print(list_4_points)
+    list_4_points = sort4point(list_4_points)
+    print(list_4_points)
     list_4_points = np.array(list_4_points)
     _per = _persp_transform(img, list_4_points)
-    cv2.imwrite("crop.png", _per)
+    save_image("crop.png", _per)
     _sp = _per.shape 
     bar_img = _per[0:int(_sp[0]*0.12), int(_sp[1]*0.48):int(_sp[1]*0.85) ]
-    cv2.imwrite("bar.png", bar_img)
+    save_image("bar.png", bar_img)
     # return list_point
     return _per
     

@@ -49,7 +49,11 @@ def upload():
     os.makedirs(name=data_path, exist_ok=True)
     try:
         if request.method == 'POST':
-            url = request.form.get('url')
+            _data = request.data.decode()
+            if (len(_data)):
+                url = eval(_data)["url"]
+            else:
+                url = request.form.get('url')
             tmp_name = "../data/{}.jpg".format(int(time.time()*1000))
             print ("[INFO] Save",url," to ", tmp_name)
             # wget.download(url, tmp_name, bar=None)

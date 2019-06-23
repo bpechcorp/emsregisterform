@@ -176,7 +176,7 @@ app.get('*', async (req, res, next) => {
     css.add(theme._getCss());
 
     const data = {
-      title: 'React Dashboard',
+      title: 'VN Tracking',
       description:
         'React Admin Starter project based on react-router 4, redux, graphql, bootstrap 4',
       keywords: 'react dashboard, react admin template, react dashboard open source, react starter, react admin, react themes, react dashboard template',

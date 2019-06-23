@@ -159,6 +159,6 @@ class Firebase{
 const instance = new Firebase();
 // export default instance;
 // window.$fbcon = instance;
-instance._getDataFromServerML({url : 'https://firebasestorage.googleapis.com/v0/b/vnpost-6d57e.appspot.com/o/1561247716824_IMG_20190622_183927.jpg?alt=media&token=1e2fd55b-e37a-4660-988b-a23929281922'})
-	.then(console.error)
-	.catch((err)=>{})
+// instance._getDataFromServerML({url : 'https://firebasestorage.googleapis.com/v0/b/vnpost-6d57e.appspot.com/o/1561247716824_IMG_20190622_183927.jpg?alt=media&token=1e2fd55b-e37a-4660-988b-a23929281922'})
+// 	.then(console.error)
+// 	.catch((err)=>{})

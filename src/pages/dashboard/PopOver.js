@@ -103,7 +103,7 @@ class PopOver extends React.Component{
 			</h1>
 			<Row sm={12} md={12} className="h-75">
 		      <Col sm={12} md={6} className="my-auto">
-		      	<Row>
+		      	<Row className="p-3">
 		      		<Widget className="container-fluid"
 		              title={
 		                  <h5>
@@ -115,7 +115,7 @@ class PopOver extends React.Component{
 				      <InfoUser ref="Sender" state={this.state.item.from} edit={this.state.edit1}/>
 		            </Widget>
 		      	</Row>
-		      	<Row>
+		      	<Row className="p-3">
 		      		<Widget className="container-fluid"
 		              title={
 		                  <h5>

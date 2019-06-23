@@ -130,13 +130,14 @@ class PopOver extends React.Component{
 		      </Col>
 		      <Col sm={12} md={6} className="my-auto">
 		      	<ModalImage
+		      		style={{maxHeight : '510px',display:'block', margin: 'auto'}}
 	      			small={item.url}
 			  		large={item.url}
 			  		hideDownload
 				  	onClose={null} />
 		      </Col>
         	</Row>
-        	<Row sm={12} md={12} className="h-25 mt-5 pt-3">
+        	<Row sm={12} md={12} className="h-25 mt-4 pt-2">
         		<Col><Button onClick={this._clickVerify} block disabled={!!item.status} className="m-auto p-3 w-50" color="success" tag="button">
         			<i className="fa fa-check text-info mr-xs mb-xs" style={{color: 'white !important'}} />{"Verify"}
         			</Button>

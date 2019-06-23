@@ -69,7 +69,7 @@ class Firebase{
 			    }
 			  })
 			  .catch((error)=>{
-			    console.error('error request', error);
+			    console.error('error request', error.status);
 			    reject(error);
 			  });
 		})
@@ -159,6 +159,6 @@ class Firebase{
 const instance = new Firebase();
 // export default instance;
 // window.$fbcon = instance;
-instance._getDataFromServerML({url : '"https://firebasestorage.googleapis.com/v0/b/vnpost-6d57e.appspot.com/o/1561228585233_IMG_20190622_183927.jpg?alt=media&token=cc04b99e-46b0-4b3c-a21d-a1a408d4d8d6"'})
+instance._getDataFromServerML({url : 'https://firebasestorage.googleapis.com/v0/b/vnpost-6d57e.appspot.com/o/1561247716824_IMG_20190622_183927.jpg?alt=media&token=1e2fd55b-e37a-4660-988b-a23929281922'})
 	.then(console.error)
-	.catch(console.error)
+	.catch((err)=>{})

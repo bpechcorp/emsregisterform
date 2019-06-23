@@ -12,7 +12,7 @@ import argparse
 import numpy as np
 
 class BeamSearchDecoder():
-    def __init__(self, lib, corpus, chars, word_chars, beam_width=50, lm_type='Words', lm_smoothing=0.2, tfsess=None):
+    def __init__(self, lib, corpus, chars, word_chars, beam_width=50, lm_type='Words', lm_smoothing=0.01, tfsess=None):
         word_beam_search_module = tf.load_op_library(lib)
         self.mat = tf.placeholder(tf.float32)
         corpus = open(corpus).read()

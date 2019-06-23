@@ -19,7 +19,8 @@ app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 DPI = 300
 ALL_LINE_SIZE = (1000, 64)
-all_ocrer = crnn_ocr.CRNNOCR(model_path="../duc/vnpost_ocr/ocr.model", normalize_size=ALL_LINE_SIZE, alphabet_path="../duc/vnpost_ocr/ocr.model")
+all_ocrer = crnn_ocr.CRNNOCR(model_path="../duc/vnpost_ocr/ocr.model", normalize_size=ALL_LINE_SIZE, 
+        alphabet_path="../duc/vnpost_ocr/char")
 
 root_dir = os.getcwd()
 

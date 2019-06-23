@@ -68,6 +68,9 @@ def _persp_transform(img, s_points):
     M = cv2.getPerspectiveTransform(s_points, t_points) 
     return cv2.warpPerspective(img, M, (int(width), int(height)))
 
+def save_image(fname, img):
+    cv2.imwrite(fname, cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
+
 def run(path):
     img = read_rgb(path)
     sp = img.shape

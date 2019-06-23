@@ -4,13 +4,24 @@ import argparse
 import subprocess
 import pytesseract 
 import json 
+import wget
+import time
+from detect_rectangle import detect_rect
+from barcode import readBar
+from detect_region import detect_region
 
+import crnn_ocr 
 
 app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 DPI = 300
+ALL_LINE_SIZE = (1000, 64)
+all_ocrer = crnn_ocr.CRNNOCR(model_path="../duc/vnpost_ocr/ocr.model", normalize_size=ALL_LINE_SIZE, alphabet_path="../duc/vnpost_ocr/ocr.model")
 
 root_dir = os.getcwd()
+
+def process_region(path):
+    return {"name":"Pham Tu Anh", "address":"182 Le Dai Hanh, Phuong 15, Quan 11, HCM", "phone":"0169696969"}
 
 app.config['JSON_AS_ASCII'] = False
 @app.route("/upload", methods=['POST'])
@@ -19,12 +30,21 @@ def upload():
     data_path = os.path.join(root_dir, "../data")
     os.makedirs(name=data_path, exist_ok=True)
     try:
-        result_metadata = {}
-        result_metadata["from"] = {"name":"Ha Nhat Cuong", "address":"182 Le Dai Hanh, Phuong 15, Quan 11, HCM", "phone":"0169696969"}
-        result_metadata["to"] = {"name":"Pham Ba Cuong Quoc", "address":"69 Le Dai Hanh, Phuong 15, Quan 11, HCM", "phone":"0169696969"}
-        result_metadata["barcode"] = "MK023948234"
-        result_metadata["status"] = True
-        return jsonify(result_metadata)
+        if request.method == 'POST':
+            url = request.form.get('url')
+            tmp_name = "../data/{}.jpg".format(int(time.time()*1000))
+            print ("[INFO] Save",url," to ", tmp_name)
+            wget.download(url, tmp_name, bar=None)
+            detect_rect.run(tmp_name)
+            detect_region.run("crop.png")
+            bar_string = readBar.run("bar.png")
+            # 
+            result_metadata = {}
+            result_metadata["from"] = process_region("region_from.png")
+            result_metadata["to"] = process_region("region_to.png")
+            result_metadata["barcode"] = bar_string
+            result_metadata["status"] = True
+            return jsonify(result_metadata)
     except Exception as e:
         print (e) 
         return jsonify({"status":False, "error":e})

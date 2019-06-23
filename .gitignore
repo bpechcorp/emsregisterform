@@ -10,3 +10,9 @@ __pycache__
 *.pyc
 *.weights
 .ipynb_checkpoints/
+
+DetectRegion.ipynb
+bar.png
+crop.png
+region_from.png
+region_to.png

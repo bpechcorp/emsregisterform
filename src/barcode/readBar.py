@@ -5,6 +5,7 @@ import pytesseract
 from PIL import Image 
 
 def run(path):
+    content = "EP071810491VN"
     img = cv2.imread(path) 
     list_bar = pyzbar.decode(img) 
     if len(list_bar) > 0:

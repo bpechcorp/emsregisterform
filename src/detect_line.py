@@ -11,6 +11,8 @@ import imutils
 import sys 
 
 
+red = (255, 0, 0)
+
 def read_bgr(fname):
     return cv2.imread(fname, 1)
 

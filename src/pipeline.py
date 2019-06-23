@@ -9,7 +9,8 @@ import time
 from detect_rectangle import detect_rect
 from barcode import readBar
 from detect_region import detect_region
-
+from detect_line import boxes_pipeline
+from PIL import Image, ImageDraw
 import crnn_ocr 
 from ctpn.get_boxes import LineDetector
 from firebase import Firebase
@@ -39,7 +40,21 @@ all_ocrer = crnn_ocr.CRNNOCR(model_path="../duc/vnpost_ocr/ocr.model", normalize
 root_dir = os.getcwd()
 
 def process_region(path):
-    return {"name":"Pham Tu Anh", "address":"182 Le Dai Hanh, Phuong 15, Quan 11, HCM", "phone":"0169696969"}
+    list_lines = boxes_pipeline(path, line_detector)
+    print (list_lines)
+    list_text = []
+    org_img = Image.open(path).convert("RGB")
+    for line in list_lines:
+        # crop 
+        cropped = org_img.crop(line)
+        # detect
+        line_content, sent_prob = all_ocrer.run_image(cropped) 
+        print ("content:", line_content, sent_prob )
+        list_text.append(line_content)
+        name = list_text[0]
+        phone = list_text[-1]
+        address = " ".join(list_text[1:-1])
+    return {"name":name, "address":address, "phone":phone}
 
 app.config['JSON_AS_ASCII'] = False
 @app.route("/upload", methods=['POST'])

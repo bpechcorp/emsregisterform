@@ -68,7 +68,8 @@ class Dashboard extends Component {
   }
 
   render() {
-    const items = DataModelInstance.getItems();
+    const items = DataModelInstance.getItems(0);
+    const itemDone = DataModelInstance.getItems(1);
     return (
       <div className={s.root}>
         <PopOver />
@@ -76,7 +77,7 @@ class Dashboard extends Component {
           <BreadcrumbItem>Tracking Order</BreadcrumbItem>
           <BreadcrumbItem active>Tracking</BreadcrumbItem>
         </Breadcrumb>
-        <h1 className="mb-lg">Tracking</h1>
+        <h1 className="mb-lg">Waiting</h1>
         <Row>
           <Col sm={12} md={12}>
             <Widget
@@ -114,7 +115,43 @@ class Dashboard extends Component {
             </Widget>
           </Col>
         </Row>
-        <Row />
+        <Row>
+          <Col sm={12} md={12}>
+            <Widget
+              title={
+                <div>
+                  <div className="pull-right mt-n-xs">
+                    <input
+                      type="search"
+                      placeholder="Search..."
+                      className="form-control input-sm"
+                    />
+                  </div>
+                  <h5 className="mt-0 mb-3">
+                    <i className="fa fa-user mr-xs opacity-70" />{' '}
+                    History
+                  </h5>
+                </div>
+              }
+            >
+              <Table responsive borderless className={cx('mb-0', s.usersTable)}>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Barcode</th>
+                    <th>SenderName</th>
+                    <th>PhoneNumber</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {itemDone.map(v=>renderRowFromItem(v))}
+                </tbody>
+              </Table>
+            </Widget>
+          </Col>
+        </Row>
       </div>
     );
   }

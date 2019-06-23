@@ -107,9 +107,11 @@ class DataModel {
 			}
 			if(nativeKey && window.Notification){
 				if(!localStorage.getItem(nativeKey)){
-					new window.Notification(`Tracking Order`, {
+					let n = new window.Notification(`Tracking Order`, {
 						body : msg,
 					})
+					n.onclick = function(x) { window.focus(); this.close(); };
+					n.show();
 				}
 				localStorage.setItem(nativeKey, '1');
 			}
@@ -169,8 +171,14 @@ class DataModel {
 		}
 		
 	}
-	getItems(){
-		return [...this._listItems];
+	getItems(filter){
+		let resp = [];
+		this._listItems.forEach(v=>{
+			if(v && !!v.status == !!filter){
+				resp.push(v);
+			}
+		})
+		return resp;
 	}
 }
 

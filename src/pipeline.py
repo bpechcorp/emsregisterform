@@ -12,6 +12,20 @@ from detect_region import detect_region
 
 import crnn_ocr 
 from ctpn.get_boxes import LineDetector
+from firebase import Firebase
+import urllib.request
+
+firebaseConfig = {
+    "apiKey": "AIzaSyAOew38a3cmVkrClA3TfIeJwgP-xEBIhdE",
+    "authDomain": "vnpost-6d57e.firebaseapp.com",
+    "databaseURL": "https://vnpost-6d57e.firebaseio.com",
+    "projectId": "vnpost-6d57e",
+    "storageBucket": "vnpost-6d57e.appspot.com",
+    "messagingSenderId": "419665295516",
+    "appId": "1:419665295516:web:7e3ec35c1c4e7514"
+  }
+firebase = Firebase(firebaseConfig)
+
 
 line_detector = LineDetector("ctpn/network/ctpn.pb") 
 
@@ -38,7 +52,8 @@ def upload():
             url = request.form.get('url')
             tmp_name = "../data/{}.jpg".format(int(time.time()*1000))
             print ("[INFO] Save",url," to ", tmp_name)
-            wget.download(url, tmp_name, bar=None)
+            # wget.download(url, tmp_name, bar=None)
+            urllib.request.urlretrieve(url, tmp_name)  
             detect_rect.run(tmp_name)
             detect_region.run("crop.png")
             bar_string = readBar.run("bar.png")

@@ -34,18 +34,21 @@ def upload():
     data_path = os.path.join(root_dir, "../data")
     os.makedirs(name=data_path, exist_ok=True)
     try:
-        current_file = request.files.getlist("file")[0] 
-        current_file_name = current_file.filename
-        basename, extension = os.path.splitext(current_file_name) 
-        destination_path = os.path.join("../data/", current_file_name)
-        current_file.save(destination_path)
-        tmp_name = destination_path
+        # current_file = request.files.getlist("file")[0] 
+        # current_file_name = current_file.filename
+        # basename, extension = os.path.splitext(current_file_name) 
+        # destination_path = os.path.join("../data/", current_file_name)
+        # current_file.save(destination_path)
+        # tmp_name = destination_path
         if True:
         # if request.method == 'POST':
             # url = request.form.get('url')
             # tmp_name = "../data/{}.jpg".format(int(time.time()*1000))
             # print ("[INFO] Save",url," to ", tmp_name)
             # wget.download(url, tmp_name)
+            tmp_name = request.form.get('name') 
+            print (">>>", tmp_name)
+            print (request.files['file'])
             detect_rect.run(tmp_name)
             detect_region.run("crop.png")
             bar_string = readBar.run("bar.png")

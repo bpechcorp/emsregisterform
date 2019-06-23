@@ -38278,8 +38278,8 @@ var Firebase = function () {
 			});
 		}
 	}, {
-		key: "uploadFile",
-		value: function uploadFile(file) {
+		key: "_uploadFile",
+		value: function _uploadFile(file) {
 			var _this = this;
 
 			return new Promise(function (resolve, reject) {
@@ -38289,8 +38289,8 @@ var Firebase = function () {
 			});
 		}
 	}, {
-		key: "_uploadFile",
-		value: function _uploadFile(file) {
+		key: "uploadFile",
+		value: function uploadFile(file) {
 			return new Promise(function (resolve, reject) {
 				var metaData = {};
 				var fname = Date.now() + '_' + file.name;

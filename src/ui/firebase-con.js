@@ -156,14 +156,14 @@ class Firebase{
 			}).catch(reject);
 		})
 	}
-	uploadFile(file){
+	_uploadFile(file){
 		return new Promise((resolve, reject)=>{
 			this.fixFile(file).then((nfile)=>{
 				resolve(this._uploadFile(nfile));
 			}).catch(reject);
 		})
 	}
-	_uploadFile(file){
+	uploadFile(file){
 		return new Promise((resolve, reject)=>{
 			let metaData = {};
 			let fname = Date.now() + '_' + file.name;

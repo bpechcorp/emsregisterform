@@ -1,11 +1,11 @@
 import torch
 from torch.autograd import Variable
-import utils
-import dataset 
+import ocr.crnn.utils as utils
+import ocr.crnn.dataset as dataset 
 from PIL import Image
 import os 
 import sys 
-import crnn
+import ocr.crnn.models.crnn as crnn
 from torch.nn.functional import softmax
 import tensorflow as tf
 import argparse
